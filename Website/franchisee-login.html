@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Franchisee Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fff; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+    .card { background:#fff; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:20px; max-width:700px; width:100%; }
+    h2 { color:#ff6600; text-align:center; }
+    input, button { width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:6px; }
+    button { background:#ff6600; color:#fff; border:none; cursor:pointer; font-weight:bold; }
+    button:hover { background:#e65c00; }
+    .hidden { display:none; }
+    table { width:100%; border-collapse:collapse; margin-top:15px; }
+    th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+    th { background:#fff7f0; color:#ff6600; }
+    input[type="text"] { border:1px solid #ff6600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <header>
+      <img src="logo.jpg" alt="GrowGrid Logo" style="height:150px; width:auto;">
+    </header>
+    <!-- Login Section -->
+    <div id="login-section">
+      <h2>Franchisee Login</h2>
+      <input type="email" placeholder="Email" id="femail">
+      <input type="password" placeholder="Password" id="fpassword">
+      <button onclick="franchiseeLogin()">Login</button>
+      <button onclick="location.href='index.html'">← Back</button>
+    </div>
+
+    <!-- Partner List Section -->
+    <div id="partners-section" class="hidden">
+      <h2>Our Partners</h2>
+
+      <!-- Search bar -->
+      <input type="text" id="partnerSearch" placeholder="Search partner..." onkeyup="searchPartners()">
+
+      <table id="partnerTable">
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Location</th>
+        </tr>
+        <tr>
+          <td>Rahul Sharma</td>
+          <td>+91 9876543210</td>
+          <td>rahul@partnerhub.com</td>
+          <td>Mumbai</td>
+        </tr>
+        <tr>
+          <td>Ananya Gupta</td>
+          <td>+91 9123456789</td>
+          <td>ananya@partnerhub.com</td>
+          <td>Bangalore</td>
+        </tr>
+        <tr>
+          <td>Arjun Verma</td>
+          <td>+91 9988776655</td>
+          <td>arjun@partnerhub.com</td>
+          <td>Delhi</td>
+        </tr>
+        <tr>
+          <td>Priya Nair</td>
+          <td>+91 9090909090</td>
+          <td>priya@partnerhub.com</td>
+          <td>Kochi</td>
+        </tr>
+        <tr>
+          <td>Karan Mehta</td>
+          <td>+91 9812345678</td>
+          <td>karan@partnerhub.com</td>
+          <td>Ahmedabad</td>
+        </tr>
+          <td>Adesh Sharma</td>
+          <td>+91 9876503210</td>
+          <td>shrma@partnerhub.com</td>
+          <td>Mumbai</td>
+        </tr>
+        <tr>
+          <td>Shashtry</td>
+          <td>+91 9123456789</td>
+          <td>shash@partnerhub.com</td>
+          <td>Bangalore</td>
+        </tr>
+        <tr>
+          <td>Arjun Reddy</td>
+          <td>+91 9988776555</td>
+          <td>reddy@partnerhub.com</td>
+          <td>Delhi</td>
+        </tr>
+        <tr>
+          <td>Charles Fernandes</td>
+          <td>+91 9090919090</td>
+          <td>charles@partnerhub.com</td>
+          <td>Kochi</td>
+        </tr>
+        <tr>
+          <td>Adolf Powerhouse</td>
+          <td>+91 9812340678</td>
+          <td>adolf@partnerhub.com</td>
+          <td>Ahmedabad</td>
+        </tr>
+      </table>
+      <button onclick="location.href='index.html'">← Back to Home</button>
+    </div>
+  </div>
+
+  <script>
+    function franchiseeLogin() {
+      document.getElementById("login-section").classList.add("hidden");
+      document.getElementById("partners-section").classList.remove("hidden");
+    }
+
+    function searchPartners() {
+      let input = document.getElementById("partnerSearch").value.toLowerCase();
+      let rows = document.getElementById("partnerTable").getElementsByTagName("tr");
+
+      for (let i = 1; i < rows.length; i++) { // skip header
+        let rowText = rows[i].textContent.toLowerCase();
+        rows[i].style.display = rowText.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+</body>
+</html>
+

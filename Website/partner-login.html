@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#fff; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+    .card { background:#fff; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:20px; max-width:500px; width:100%; }
+    h2 { color:#ff6600; text-align:center; }
+    input, button { width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:6px; }
+    button { background:#ff6600; color:#fff; border:none; cursor:pointer; font-weight:bold; }
+    button:hover { background:#e65c00; }
+    .hidden { display:none; }
+    ul { list-style:none; padding:0; }
+    li { padding:10px; margin:6px 0; background:#fff7f0; border-left:4px solid #ff6600; border-radius:6px; }
+    input[type="text"] { border:1px solid #ff6600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <header>
+      <img src="logo.jpg" alt="GrowGrid Logo" style="height:150px; width:auto;">
+    </header>
+    <!-- Login form -->
+    <div id="login-section">
+      <h2>Partner Login</h2>
+      <input type="email" placeholder="Email" id="email">
+      <input type="password" placeholder="Password" id="password">
+      <button onclick="login()">Login</button>
+      <button onclick="location.href='index.html'">← Back</button>
+    </div>
+
+    <!-- Terms section -->
+    <div id="terms-section" class="hidden">
+      <h2>Terms & Conditions</h2>
+      <p style="font-size:14px; color:#555; text-align:justify;">
+        By using Franchise Connect, you agree to follow all rules, maintain transparency, and ensure 
+        customer satisfaction. Franchise details must be accurate, and quality standards must be met.
+      </p>
+      <button onclick="acceptTerms()">I Accept</button>
+    </div>
+
+    <!-- Franchise list section -->
+    <div id="franchise-section" class="hidden">
+      <h2>Available Franchises</h2>
+      
+      <!-- Search bar -->
+      <input type="text" id="franchiseSearch" placeholder="Search franchise..." onkeyup="searchFranchises()">
+
+      <ul id="franchiseList">
+        <li> Burger Hub – Fast Food Franchise</li>
+        <li> Coffee Corner – Café Franchise</li>
+        <li> EduSmart – Coaching Center Franchise</li>
+        <li> FitPro – Gym & Fitness Franchise</li>
+        <li> WalkWell – Shoe Store Franchise</li>
+	<li> Pizza Ball – Fast Food Franchise</li>
+        <li> Cafe Corner – Café Franchise</li>
+        <li> EduCoach – Coaching Center Franchise</li>
+        <li> FitNow – Fitness Franchise</li>
+        <li> WalkIt – Shoe rewards Franchise</li>
+      </ul>
+      <button onclick="location.href='index.html'">← Back to Home</button>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      document.getElementById("login-section").classList.add("hidden");
+      document.getElementById("terms-section").classList.remove("hidden");
+    }
+
+    function acceptTerms() {
+      document.getElementById("terms-section").classList.add("hidden");
+      document.getElementById("franchise-section").classList.remove("hidden");
+    }
+
+    function searchFranchises() {
+      let input = document.getElementById("franchiseSearch").value.toLowerCase();
+      let items = document.getElementById("franchiseList").getElementsByTagName("li");
+      
+      for (let i = 0; i < items.length; i++) {
+        let text = items[i].textContent.toLowerCase();
+        items[i].style.display = text.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+</body>
+</html>
+
